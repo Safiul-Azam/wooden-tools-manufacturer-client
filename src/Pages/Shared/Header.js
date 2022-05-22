@@ -1,13 +1,23 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import CustomLink from './CustomLink';
 
 const Header = () => {
+    const [user] = useAuthState(auth)
+    const logOut = ()=>{
+        signOut(auth)
+    }
     const menu = <>
-        <li><CustomLink to='/home'>Item 1</CustomLink></li>
+        <li><CustomLink to='/home'>Home</CustomLink></li>
         <li><CustomLink to='/todo'>Item 3</CustomLink></li>
         <li><CustomLink to='/class'>Home</CustomLink></li>
-        <li><CustomLink to='/signup'>Login</CustomLink></li>
+        {user? 
+            <li><button onClick={logOut} className='btn-ghost'>Sign Out</button></li>:
+            <li><CustomLink to='/login'>Login</CustomLink></li>
+        }
     </>
     return (
         <div className='container mx-auto'>

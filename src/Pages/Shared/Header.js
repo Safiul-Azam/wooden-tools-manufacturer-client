@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CustomLink from './CustomLink';
 
 const Header = () => {
     const menu = <>
-        <li><Link to='/home'>Item 1</Link></li>
-        <li><Link to='/home'>Item 3</Link></li>
-        <li><Link to='/home'>Home</Link></li>
+        <li><CustomLink to='/home'>Item 1</CustomLink></li>
+        <li><CustomLink to='/todo'>Item 3</CustomLink></li>
+        <li><CustomLink to='/class'>Home</CustomLink></li>
     </>
     return (
-        <div>
+        <div className='container mx-auto'>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">

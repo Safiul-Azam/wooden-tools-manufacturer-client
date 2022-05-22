@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useRef } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -7,6 +7,7 @@ import Loading from '../Shared/Loading';
 
 const Login = () => {
     const navigate = useNavigate()
+    const emailRef = useRef('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -14,6 +15,14 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+      const [sendPasswordResetEmail, sending, sendError] = useSendPasswordResetEmail(
+        auth
+      );
+      let errorMessage;
+      if(error){
+          errorMessage = <p className='text-error text-sm mb-4'>{error.message}</p>
+      }
+
       if(user){
         navigate('/home')
       }
@@ -22,7 +31,10 @@ const Login = () => {
       }
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
-        console.log(data)};
+    };
+    const resetPassword = () =>{
+        console.log('it is clicked')
+    }
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-16'>
             <h2 className="text-2xl text-secondary font-bold text-center mb-4">Login</h2>
@@ -42,6 +54,7 @@ const Login = () => {
                                 message: 'Provide a valid email'
                             }
                         })}
+                        ref={emailRef}
                         type="email" placeholder="Enter Your Email"
                         class="input input-bordered w-full"
 
@@ -75,9 +88,11 @@ const Login = () => {
                         {errors.password?.type === 'pattern' && <span class="label-text-alt text-error">{errors.password.message}</span>}
                     </label>
                 </div>
+                {errorMessage}
                 <input className='w-full btn btn-secondary text-white' type="submit" value='Login' />
-                <p className='text-sm mt-6'>New to Wooden tools <Link className='text-primary' to='/signup'>Create new account</Link></p>
+                <p className='text-sm mt-6'>New to Wooden tools? <Link className='text-primary' to='/signup'>Create new account</Link></p>
             </form>
+                <p className='text-sm mt-6'>Forget password? <button onclick={resetPassword} className='text-primary'>Reset Password</button></p>
         </div>
     );
 };

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
 
 const SingUp = () => {
     const navigate = useNavigate()
@@ -14,14 +15,22 @@ const SingUp = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
+      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+      let errorMessage;
+      if(error){
+          errorMessage = <p className='text-error text-sm mb-4'>{error.message}</p>
+      }
       if(user){
          navigate('/home')
       }
       if(loading){
           return <Loading></Loading>
       }
-    const onSubmit = data => {
-        createUserWithEmailAndPassword(data.email, data.password)
+    const onSubmit = async data => {
+        const displayName = data.name
+        await createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName});
+        toast('Registration Completed');
         console.log(data)};
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl my-14'>
@@ -96,7 +105,7 @@ const SingUp = () => {
                 </div>
                 <input className='w-full btn btn-secondary text-white' type="submit" value='Login' />
             </form>
-            <p className='mt-6 text-sm'>Already have an account <Link className='text-primary' to='/login'>please Login</Link></p>
+            <p className='mt-6 text-sm'>Already have an account? <Link className='text-primary' to='/login'>please Login</Link></p>
         </div>
     );
 };

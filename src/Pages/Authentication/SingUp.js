@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
+import SocialLogin from './SocialLogin';
 
 const SingUp = () => {
     const navigate = useNavigate()
@@ -104,8 +105,9 @@ const SingUp = () => {
                     </label>
                 </div>
                 <input className='w-full btn btn-secondary text-white' type="submit" value='Login' />
-            </form>
             <p className='mt-6 text-sm'>Already have an account? <Link className='text-primary' to='/login'>please Login</Link></p>
+            </form>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

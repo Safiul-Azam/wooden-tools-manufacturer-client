@@ -1,37 +1,45 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 import SocialLogin from './SocialLogin';
+import { sendEmailVerification } from 'firebase/auth';
 
 const SingUp = () => {
     const navigate = useNavigate()
+    const location =useLocation()
+    const from = location?.state?.from?.pathname || '/'
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth ,{sendEmailVerification:true});
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
       let errorMessage;
-      if(error){
-          errorMessage = <p className='text-error text-sm mb-4'>{error.message}</p>
+      if(error || updateError){
+          errorMessage = <p className='text-error text-sm mb-4'>{error.message || updateError.message}</p>
       }
       if(user){
          navigate('/home')
       }
-      if(loading){
+      if(loading || updating){
           return <Loading></Loading>
       }
     const onSubmit = async data => {
         const displayName = data.name
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName});
-        toast('Registration Completed');
+        if(sendEmailVerification){
+            toast('Registration Completed');
+            navigate(from, { replace: true })
+        }else{
+            toast('Your email is not valid')
+        }
         console.log(data)};
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl my-14'>
@@ -104,7 +112,8 @@ const SingUp = () => {
                         {errors.password?.type === 'pattern' && <span class="label-text-alt text-error">{errors.password.message}</span>}
                     </label>
                 </div>
-                <input className='w-full btn btn-secondary text-white' type="submit" value='Login' />
+                {errorMessage}
+                <input className='w-full btn btn-secondary text-white' type="submit" value='signup' />
             <p className='mt-6 text-sm'>Already have an account? <Link className='text-primary' to='/login'>please Login</Link></p>
             </form>
             <SocialLogin></SocialLogin>

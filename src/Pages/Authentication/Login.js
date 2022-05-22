@@ -33,9 +33,6 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
-    const resetPassword = () => {
-        console.log('it is clicked')
-    }
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl my-16'>
             <div>
@@ -56,7 +53,6 @@ const Login = () => {
                                     message: 'Provide a valid email'
                                 }
                             })}
-                            ref={emailRef}
                             type="email" placeholder="Enter Your Email"
                             class="input input-bordered w-full"
 

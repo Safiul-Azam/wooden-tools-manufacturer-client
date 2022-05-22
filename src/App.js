@@ -12,6 +12,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrder from './Pages/Dashboard/MyOrder';
 import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import NoFound from './Pages/Shared/NoFound';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SingUp></SingUp>}></Route>
-        <Route path='/purchase' element={
+        <Route path='/purchase/:purchaseId' element={
           <RequireAuth>
             <Purchase></Purchase>
           </RequireAuth>
@@ -33,7 +34,7 @@ function App() {
         <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
 
       </Route>
-     
+      <Route path='*' element={<NoFound></NoFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>

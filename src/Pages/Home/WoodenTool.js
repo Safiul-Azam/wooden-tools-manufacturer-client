@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const WoodenTool = ({ tool }) => {
+    const navigate = useNavigate()
     const { name, description, price, minimum_quantity, available_quantity, img } = tool
     return (
         <div className='border flex justify-center flex-col'>
@@ -11,7 +13,7 @@ const WoodenTool = ({ tool }) => {
                 <h4 className='text-xl text-accent tracking-wide mt-2'>Minimum quantity {minimum_quantity}</h4>
                 <h4 className='text-xl text-accent tracking-wide mt-2'>Available quantity {available_quantity}</h4>
                 <p className='text-sm tracking-wider text-accent mt-2'>{description}</p>
-                <button className='btn btn-outline btn-primary mt-4 rounded-none tracking-widest'>Purchase</button>
+                <Link to='/purchase' className='btn btn-outline btn-primary mt-4 rounded-none tracking-widest'>Purchase</Link>
             </div>
         </div>
     );

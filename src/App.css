@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 *{
   font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 1px;
 }
 
 .App-logo {

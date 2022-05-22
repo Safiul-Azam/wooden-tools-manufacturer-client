@@ -7,6 +7,7 @@ const Header = () => {
         <li><CustomLink to='/home'>Item 1</CustomLink></li>
         <li><CustomLink to='/todo'>Item 3</CustomLink></li>
         <li><CustomLink to='/class'>Home</CustomLink></li>
+        <li><CustomLink to='/signup'>Login</CustomLink></li>
     </>
     return (
         <div className='container mx-auto'>

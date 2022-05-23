@@ -7,6 +7,7 @@ import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 import SocialLogin from './SocialLogin';
 import { sendEmailVerification } from 'firebase/auth';
+import useToken from '../../hooks/useToken';
 
 const SingUp = () => {
     const navigate = useNavigate()
@@ -20,11 +21,12 @@ const SingUp = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth ,{sendEmailVerification:true});
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+      const [token] = useToken(user)
       let errorMessage;
       if(error || updateError){
           errorMessage = <p className='text-error text-sm mb-4'>{error.message || updateError.message}</p>
       }
-      if(user){
+      if(token){
          navigate('/home')
       }
       if(loading || updating){
@@ -40,7 +42,7 @@ const SingUp = () => {
         }else{
             toast('Your email is not valid')
         }
-        console.log(data)};
+        };
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-24 mb-14'>
             <h2 className="text-2xl text-secondary font-bold text-center mb-4">Sign UP</h2>

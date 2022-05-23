@@ -10,8 +10,8 @@ const Users = () => {
     }
     return (
         <div class="overflow-x-auto">
-             <h2 className='text-3xl font-bold text-secondary text-center mt-16'>All Users</h2>
-            <table class="table w-2/3 mx-auto mt-14 border">
+             <h2 className='text-3xl font-bold text-secondary text-center mt-8'>ALL USERS</h2>
+            <table class="table w-2/3 mx-auto mt-8 border">
                 <thead>
                     <tr>
                         <th></th>

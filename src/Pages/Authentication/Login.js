@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
@@ -9,7 +9,6 @@ import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const navigate = useNavigate()
-    const emailRef = useRef('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -39,9 +38,9 @@ const Login = () => {
             <div>
                 <h2 className="text-2xl text-secondary font-bold text-center mb-4">Login</h2>
                 <form className='' onSubmit={handleSubmit(onSubmit)}>
-                    <div class="form-control w-full">
-                        <label class="label">
-                            <span class="label-text">Email</span>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Email</span>
                         </label>
                         <input
                             {...register('email', {
@@ -55,17 +54,17 @@ const Login = () => {
                                 }
                             })}
                             type="email" placeholder="Enter Your Email"
-                            class="input input-bordered w-full"
+                            className="input input-bordered w-full"
 
                         />
-                        <label class="label">
-                            {errors.email?.type === 'required' && <span class="label-text-alt text-error">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span class="label-text-alt text-error">{errors.email.message}</span>}
+                        <label className="label">
+                            {errors.email?.type === 'required' && <span className="label-text-alt text-error">{errors.email.message}</span>}
+                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-error">{errors.email.message}</span>}
                         </label>
                     </div>
-                    <div class="form-control w-full ">
-                        <label class="label">
-                            <span class="label-text">Password</span>
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text">Password</span>
                         </label>
                         <input
                             {...register('password', {
@@ -79,12 +78,12 @@ const Login = () => {
                                 }
                             })}
                             type="password" placeholder="Enter Your Password"
-                            class="input input-bordered w-full"
+                            className="input input-bordered w-full"
 
                         />
-                        <label class="label">
-                            {errors.password?.type === 'required' && <span class="label-text-alt text-error">{errors.password.message}</span>}
-                            {errors.password?.type === 'pattern' && <span class="label-text-alt text-error">{errors.password.message}</span>}
+                        <label className="label">
+                            {errors.password?.type === 'required' && <span className="label-text-alt text-error">{errors.password.message}</span>}
+                            {errors.password?.type === 'minLength' && <span className="label-text-alt text-error">{errors.password.message}</span>}
                         </label>
                     </div>
                     {errorMessage}

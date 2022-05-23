@@ -22,10 +22,10 @@ const SocialLogin = () => {
         // navigate(from, {replace:true})
     }
     return (
-        <div class="flex flex-col w-full border-opacity-50">
-        <div class="divider">OR</div>
+        <div className="flex flex-col w-full border-opacity-50">
+        <div className="divider">OR</div>
         {errorMessage}
-        <button onClick={()=>signInWithGoogle()} class="btn btn-primary text-white tracking-widest w-full ">Google Sign In</button>
+        <button onClick={()=>signInWithGoogle()} className="btn btn-primary text-white tracking-widest w-full ">Google Sign In</button>
       </div>
     );
 };

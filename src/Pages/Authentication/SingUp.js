@@ -27,7 +27,7 @@ const SingUp = () => {
           errorMessage = <p className='text-error text-sm mb-4'>{error.message || updateError.message}</p>
       }
       if(token){
-         navigate('/home')
+         navigate(from ,{replace:true})
       }
       if(loading || updating){
           return <Loading></Loading>
@@ -35,7 +35,7 @@ const SingUp = () => {
     const onSubmit = async data => {
         const displayName = data.name
         await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName});
+        await updateProfile({ displayName:displayName});
         if(sendEmailVerification){
             toast('Registration Completed');
             navigate(from, { replace: true })
@@ -47,9 +47,9 @@ const SingUp = () => {
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-24 mb-14'>
             <h2 className="text-2xl text-secondary font-bold text-center mb-4">Sign UP</h2>
             <form className='' onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-control w-full">
-                    <label className="label">
-                        <span className="label-text">Your Name</span>
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text">Your Name</span>
                     </label>
                     <input
                         {...register('name', {
@@ -59,16 +59,16 @@ const SingUp = () => {
                             }
                         })}
                         type="text" placeholder="Your Name"
-                        className="input input-bordered w-full"
+                        class="input input-bordered w-full"
 
                     />
-                    <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-error">{errors.name.message}</span>}
+                    <label class="label">
+                        {errors.name?.type === 'required' && <span class="label-text-alt text-error">{errors.name.message}</span>}
                     </label>
                 </div>
-                <div className="form-control w-full">
-                    <label className="label">
-                        <span className="label-text">Email</span>
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text">Email</span>
                     </label>
                     <input
                         {...register('email', {
@@ -82,17 +82,17 @@ const SingUp = () => {
                             }
                         })}
                         type="email" placeholder="Enter Your Email"
-                        className="input input-bordered w-full"
+                        class="input input-bordered w-full"
 
                     />
-                    <label className="label">
-                        {errors.email?.type === 'required' && <span className="label-text-alt text-error">{errors.email.message}</span>}
-                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-error">{errors.email.message}</span>}
+                    <label class="label">
+                        {errors.email?.type === 'required' && <span class="label-text-alt text-error">{errors.email.message}</span>}
+                        {errors.email?.type === 'pattern' && <span class="label-text-alt text-error">{errors.email.message}</span>}
                     </label>
                 </div>
-                <div className="form-control w-full ">
-                    <label className="label">
-                        <span className="label-text">Password</span>
+                <div class="form-control w-full ">
+                    <label class="label">
+                        <span class="label-text">Password</span>
                     </label>
                     <input
                         {...register('password', {
@@ -106,12 +106,12 @@ const SingUp = () => {
                             }
                         })}
                         type="password" placeholder="Enter Your Password"
-                        className="input input-bordered w-full"
+                        class="input input-bordered w-full"
 
                     />
-                    <label className="label">
-                        {errors.password?.type === 'required' && <span className="label-text-alt text-error">{errors.password.message}</span>}
-                        {errors.password?.type === 'pattern' && <span className="label-text-alt text-error">{errors.password.message}</span>}
+                    <label class="label">
+                        {errors.password?.type === 'required' && <span class="label-text-alt text-error">{errors.password.message}</span>}
+                        {errors.password?.type === 'pattern' && <span class="label-text-alt text-error">{errors.password.message}</span>}
                     </label>
                 </div>
                 {errorMessage}

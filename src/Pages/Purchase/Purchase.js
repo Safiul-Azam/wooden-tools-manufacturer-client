@@ -39,6 +39,7 @@ const Purchase = () => {
             {
                 order && <OrderModal
                  handTool={handTool}
+                 setOrder={setOrder}
                  ></OrderModal>
             }
         </div>

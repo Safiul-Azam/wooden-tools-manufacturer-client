@@ -19,7 +19,7 @@ const SocialLogin = () => {
         errorMessage = <p className='text-error text-sm mb-4'>{error.message}</p>
     }
     if(token){
-        // navigate(from, {replace:true})
+        navigate(from, {replace:true})
     }
     return (
         <div className="flex flex-col w-full border-opacity-50">

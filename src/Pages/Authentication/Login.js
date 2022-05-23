@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
@@ -17,15 +17,16 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending, sendError]=useSendPasswordResetEmail(auth);
+    const location = useLocation()
     const [token] = useToken(user)
-    console.log(token)
+     const from = location?.state?.from?.pathname || '/'
     let errorMessage;
     if (error) {
         errorMessage = <p className='text-error text-sm mb-4'>{error.message}</p>
     }
 
     if (token) {
-        navigate('/home')
+        navigate(from, {replace:true})
     }
     if (loading) {
         return <Loading></Loading>

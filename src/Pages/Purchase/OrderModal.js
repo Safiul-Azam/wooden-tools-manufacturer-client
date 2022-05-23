@@ -1,21 +1,23 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
-const OrderModal = ({ handTool }) => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+const OrderModal = ({ handTool ,setOrder}) => {
+    const { register, formState: { errors }, handleSubmit,reset } = useForm();
     const [user] = useAuthState(auth)
 
     const onSubmit = data => {
         const order = {
             email:data.email,
-            userName:data.displayName,
-            name:data.name, 
+            name:data.name,
+            productName:handTool.name, 
             description:data.description,
             quantity:data.quantity,
             phone:data.phone,
             address:data.address,
+            perPrice:handTool.price,
             totalPrice:handTool.price * data.quantity
         }
         fetch('http://localhost:5000/order',{
@@ -26,8 +28,14 @@ const OrderModal = ({ handTool }) => {
             body:JSON.stringify(order)
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data)
+        .then(inserted => {
+            if(inserted.insertedId){
+                toast.success('your order is add to card. please pay for your order')
+                reset()
+                setOrder(null)
+            }else{
+                toast.error('sorry! try again for order')
+            }
         })
     };
     return (
@@ -76,9 +84,6 @@ const OrderModal = ({ handTool }) => {
                         type="text" placeholder="Your Address" className="input input-bordered w-full mb-3" />
                         <input className='btn btn-secondary w-full' type="submit" value='submit' />
                     </form>
-                    <div className="modal-action">
-                        <label htmlFor="order-modal" className="btn">Yay!</label>
-                    </div>
                 </div>
             </div>
         </div>

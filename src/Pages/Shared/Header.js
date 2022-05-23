@@ -12,10 +12,12 @@ const Header = () => {
     }
     const menu = <>
         <li><CustomLink to='/home'>Home</CustomLink></li>
-        <li><CustomLink to='/todo'>Item</CustomLink></li>
-        <li><CustomLink to='/class'>Home</CustomLink></li>
         {
-            user && <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
+            user &&
+            <>
+                <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
+                <li><CustomLink to='/woodenTools'>Wooden Tools</CustomLink></li>
+            </>
         }
         {user ?
             <li><button onClick={logOut} className='btn-ghost'>Sign Out</button></li> :
@@ -24,7 +26,7 @@ const Header = () => {
     </>
     return (
         <div className='mx-auto'>
-            <div className="navbar bg-base-100 shadow-sm fixed top-0 mb-20 z-10">
+            <div className="navbar bg-gray-100 shadow-sm fixed top-0 mb-20 z-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -35,7 +37,7 @@ const Header = () => {
                         </ul>
                     </div>
                     <Link to='/home' className='text-3xl  font-bold text-primary'>Wooden <span className='text-secondary'>Tools</span></Link>
-                   
+
                 </div>
                 <label htmlFor="my-drawer-2" tabIndex="1" className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

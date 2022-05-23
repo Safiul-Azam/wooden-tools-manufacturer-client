@@ -6,8 +6,29 @@ import auth from '../../firebase.init';
 const OrderModal = ({ handTool }) => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth)
+
     const onSubmit = data => {
-        console.log(data)
+        const order = {
+            email:data.email,
+            userName:data.displayName,
+            name:data.name, 
+            description:data.description,
+            quantity:data.quantity,
+            phone:data.phone,
+            address:data.address,
+            totalPrice:handTool.price * data.quantity
+        }
+        fetch('http://localhost:5000/order',{
+            method:'POST',
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(order)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
     };
     return (
         <div>
@@ -45,19 +66,15 @@ const OrderModal = ({ handTool }) => {
                                 {errors.quantity?.type === 'max' && <span className="label-text-alt text-error">{errors.quantity.message}</span>}
                             </label>
                         </div>
-
-                        <input 
-                        {...register("price")}
-                        type="text" value={ handTool.price } readOnly className="input input-bordered w-full mb-3" />
                         <input
-                        {...register("mobile")}
+                        {...register("phone")}
                         required
                         type="number" placeholder="Phone" className="input input-bordered w-full mb-3" />
                         <input
                         {...register("address")}
                         required
                         type="text" placeholder="Your Address" className="input input-bordered w-full mb-3" />
-                        <input type="submit" value='submit' />
+                        <input className='btn btn-secondary w-full' type="submit" value='submit' />
                     </form>
                     <div className="modal-action">
                         <label htmlFor="order-modal" className="btn">Yay!</label>

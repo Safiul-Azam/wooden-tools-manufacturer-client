@@ -42,7 +42,7 @@ const SingUp = () => {
         }
         console.log(data)};
     return (
-        <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl my-14'>
+        <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-24 mb-14'>
             <h2 className="text-2xl text-secondary font-bold text-center mb-4">Sign UP</h2>
             <form className='' onSubmit={handleSubmit(onSubmit)}>
                 <div class="form-control w-full">

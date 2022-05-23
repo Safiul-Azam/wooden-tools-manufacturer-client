@@ -7,7 +7,7 @@ import CustomLink from './CustomLink';
 
 const Header = () => {
     const [user] = useAuthState(auth)
-    const logOut = ()=>{
+    const logOut = () => {
         signOut(auth)
     }
     const menu = <>
@@ -17,14 +17,14 @@ const Header = () => {
         {
             user && <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
         }
-        {user? 
-            <li><button onClick={logOut} className='btn-ghost'>Sign Out</button></li>:
+        {user ?
+            <li><button onClick={logOut} className='btn-ghost'>Sign Out</button></li> :
             <li><CustomLink to='/login'>Login</CustomLink></li>
         }
     </>
     return (
-        <div className='container mx-auto'>
-            <div className="navbar bg-base-100">
+        <div className='mx-auto'>
+            <div className="navbar bg-base-100 shadow-sm fixed top-0 mb-20 z-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -34,11 +34,12 @@ const Header = () => {
                             {menu}
                         </ul>
                     </div>
-                    <Link to='/home' className="text-2xl tracking-widest font-bold text-accent">Wooden Tools</Link>
+                    <Link to='/home' className='text-3xl  font-bold text-primary'>Wooden <span className='text-secondary'>Tools</span></Link>
+                   
                 </div>
-                        <label for="my-drawer" tabIndex="1" className="btn btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
+                <label for="my-drawer-2" tabIndex="1" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         {menu}

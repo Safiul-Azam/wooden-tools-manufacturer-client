@@ -34,7 +34,7 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password)
     };
     return (
-        <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl my-16'>
+        <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-28 mb-16'>
             <div>
                 <h2 className="text-2xl text-secondary font-bold text-center mb-4">Login</h2>
                 <form className='' onSubmit={handleSubmit(onSubmit)}>

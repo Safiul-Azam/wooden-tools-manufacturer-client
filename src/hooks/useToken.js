@@ -2,12 +2,9 @@ import { useEffect, useState } from "react"
 
 const useToken = (user) => {
     const [token, setToken] = useState('')
-    console.log(user)
     useEffect(() => {
         const email = user?.user?.email
         const displayName = user?.user?.displayName
-        console.log(email)
-        console.log(displayName)
         const currentUser = { email: email, displayName:displayName }
         if (email) {
             const url = `http://localhost:5000/users/${email}`
@@ -20,7 +17,10 @@ const useToken = (user) => {
             })
             .then(res => res.json())
             .then(data => {
-                setToken(data)})
+                const token = data.jwtAccessToken 
+                localStorage.setItem('accessToken', token)
+                setToken(data)
+            })
         }
     }, [user])
     return [token]

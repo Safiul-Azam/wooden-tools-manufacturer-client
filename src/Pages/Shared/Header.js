@@ -12,6 +12,7 @@ const Header = () => {
     }
     const menu = <>
         <li><CustomLink to='/home'>Home</CustomLink></li>
+        <li><CustomLink to='/reviews'>Reviews</CustomLink></li>
         {
             user &&
             <>
@@ -20,12 +21,12 @@ const Header = () => {
             </>
         }
         {user ?
-            <li><button onClick={logOut} className='btn-ghost'>Sign Out</button></li> :
+            <li><button onClick={logOut} className='btn-ghost'>Sign Out</button><p className='text-lg text-primary'>{user.displayName}</p></li> :
             <li><CustomLink to='/login'>Login</CustomLink></li>
         }
     </>
     return (
-        <div className='mx-auto'>
+        <div className='mx-auto mb-16'>
             <div className="navbar bg-gray-100 shadow-sm fixed top-0 mb-20 z-10">
                 <div className="navbar-start">
                     <div className="dropdown">

@@ -9,7 +9,7 @@ const Reviews = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='container mx-auto mb-20'>
+        <div className='container mx-auto my-24'>
             <h2 className="text-2xl mb-4 text-secondary text-center font-bold">CLIENT REVIEW</h2>
             <div className='grid grid-cols-3 gap-20'>
                 {

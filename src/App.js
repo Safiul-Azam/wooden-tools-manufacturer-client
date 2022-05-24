@@ -15,6 +15,7 @@ import MyProfile from './Pages/Dashboard/MyProfile';
 import NoFound from './Pages/Shared/NoFound';
 import Users from './Pages/Dashboard/Users';
 import WoodenTools from './Pages/Home/WoodenTools';
+import Reviews from './Pages/Home/Reviews';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SingUp></SingUp>}></Route>
         <Route path='/woodenTools' element={<WoodenTools></WoodenTools>}></Route>
+        <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/purchase/:purchaseId' element={
           <RequireAuth>
             <Purchase></Purchase>

@@ -6,12 +6,12 @@ const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col mt-24">
+            <div className="drawer-content flex flex-col mt-8">
                 {/* <!-- Page content here --> */}
                 <h3 className='text-center text-purple-500 text-4xl font-bold drop-shadow-lg'>welcome to your Dashboard</h3>
                 <Outlet></Outlet>
             </div>
-            <div className="drawer-side mt-16">
+            <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-48 bg-gray-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}

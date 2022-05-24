@@ -6,7 +6,7 @@ import WoodenTools from './WoodenTools';
 
 const Home = () => {
     return (
-        <div className='mt-16'>
+        <div className=''>
             <Banner></Banner>
             <WoodenTools></WoodenTools>
             <Reviews></Reviews>

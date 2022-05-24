@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
@@ -9,7 +10,7 @@ import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const navigate = useNavigate()
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit,getValues } = useForm();
     const [
         signInWithEmailAndPassword,
         user,
@@ -34,6 +35,11 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
+    const handlePasswordReset = async ()=>{
+        const email = getValues('email')
+       await sendPasswordResetEmail(email)
+       toast('send your email')
+    }
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-28 mb-16'>
             <div>
@@ -91,6 +97,7 @@ const Login = () => {
                     <input className='w-full btn btn-secondary text-white' type="submit" value='Login' />
                     <p className='text-sm mt-6'>New to Wooden tools? <Link className='text-primary' to='/signup'>Create new account</Link></p>
                 </form>
+                    <p>Forget Password?<button onClick={handlePasswordReset} className='btn btn-link text-xs font-normal'>Reset Password</button></p>
             </div>
             <SocialLogin></SocialLogin>
         </div>

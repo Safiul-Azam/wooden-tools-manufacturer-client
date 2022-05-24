@@ -1,61 +1,55 @@
 [
     {
         "_id": 1,
-        "name": "Woody Table",
-        "price": "300",
+        "productName": "Woody Table",
+        "perPrice": "300",
         "minimum_quantity": "100",
         "available_quantity":"500",
-        "supplier":"James William",
         "description": "Made from  Beech wood and veneered engineered wood. imported high quality hardware fittings. ",
         "img": "https://i.ibb.co/q100X8P/furniture1.jpg"
     },
     {
         "_id": 2,
-        "name": "Norfolk Chair",
-        "price": "100",
+        "productName": "Norfolk Chair",
+        "perPrice": "100",
         "minimum_quantity": "100",
         "available_quantity":"500",
-        "supplier":"Sebastian",
         "description": "Made from Kiln-dried imported Beech veneered engineered wood.imported high quality hardware fittings.",
         "img": "https://i.ibb.co/tP89bd5/furniture2.jpg"
     },
     {
         "_id": 3,
-        "name": "Prix Chair",
-        "price": "150",
+        "productName": "Prix Chair",
+        "perPrice": "150",
         "minimum_quantity": "100",
         "available_quantity":"500",
-        "supplier":"Christopher",
         "description": "Made from Kiln-dried imported Beech wood and veneered engineered wood.Fabric can ",
         "img": "https://i.ibb.co/KzwSrSj/furniture3.jpg"
     },
     {
         "_id": 4,
-        "name": " Table Dove with Glass",
-        "price": "180",
+        "productName": " Table Dove with Glass",
+        "perPrice": "180",
         "minimum_quantity": "100",
         "available_quantity":"500",
-        "supplier":"Gabriel",
         "description": "Made from Kiln-dried imported Beech wood and veneered engineered wood.imported high quality hardware fittings ",
         "img": "https://i.ibb.co/NLWw351/furniture4.jpg"
     },
     {
         "_id": 5,
-        "name": " Patriot Chair",
-        "price": "100",
+        "productName": " Patriot Chair",
+        "perPrice": "100",
         "minimum_quantity": "100",
         "available_quantity":"500",
-        "supplier":"Jeremiah",
         "description": "Made from Kiln-dried imported Beech wood. High quality leather upholstery with soft and durable cushioning.",
         "img": "https://i.ibb.co/TPBbqWC/furniture5.jpg"
     },
     {
         "_id": 6,
-        "name": "Table Kiwi with Glass",
-        "price": "300",
+        "productName": "Table Kiwi with Glass",
+        "perPrice": "300",
         "minimum_quantity": "100",
         "available_quantity":"500",
-        "supplier":"Bennett",
         "description": "Made from Kiln-dried imported Beech wood and veneered engineered wood.",
         "img": "https://i.ibb.co/qgZKt1Q/furniture6.jpg"
     }

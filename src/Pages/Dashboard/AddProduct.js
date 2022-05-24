@@ -2,12 +2,11 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
-import useAdmin from '../../hooks/useAdmin';
 
 const AddProduct = () => {
     const user = useAuthState(auth)
     const email = user[0].email
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
     }
@@ -39,9 +38,9 @@ const AddProduct = () => {
                     placeholder='Available Quantity'
                     className="input input-bordered w-full mb-3" />
                 <input
-                    {...register("price")}
+                    {...register("PerPrice")}
                     required
-                    type="number" placeholder="Price" className="input input-bordered w-full mb-3" />
+                    type="number" placeholder="Per Price" className="input input-bordered w-full mb-3" />
                 <input
                     {...register("image")}
                     required

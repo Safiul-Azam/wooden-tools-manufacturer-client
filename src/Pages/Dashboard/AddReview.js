@@ -38,7 +38,7 @@ const AddReview = () => {
                     <label className="label">
                         <span className="label-text">Your Review</span>
                     </label>
-                    <textarea cols="0" rows="10" placeholder='Your Review' className="input input-bordered w-full" {...register("description")}></textarea>
+                    <textarea cols="0" rows="10" placeholder='Your Review'required className="input input-bordered w-full" {...register("description")}></textarea>
                     <input className='btn btn-secondary w-full my-4' type="submit" value='submit' />
                 </form>
             </div>

@@ -9,9 +9,9 @@ const Users = () => {
         return <Loading></Loading>
     }
     return (
-        <div class="overflow-x-auto">
+        <div className="overflow-x-auto">
              <h2 className='text-3xl font-bold text-secondary text-center mt-8'>ALL USERS</h2>
-            <table class="table w-2/3 mx-auto mt-8 border">
+            <table className="table w-2/3 mx-auto mt-8 border">
                 <thead>
                     <tr>
                         <th></th>

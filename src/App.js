@@ -18,6 +18,8 @@ import WoodenTools from './Pages/Home/WoodenTools';
 import Reviews from './Pages/Home/Reviews';
 import RequireAdmin from './Pages/Authentication/RequireAdmin';
 import AllOrders from './Pages/Dashboard/AllOrders';
+import AddProduct from './Pages/Dashboard/AddProduct';
+import ManageAllProducts from './Pages/Dashboard/ManageAllProducts';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path='addReview' element={<AddReview></AddReview>}></Route>
         <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
         <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+        <Route path='addProduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+        <Route path='manageAllProducts' element={<RequireAdmin><ManageAllProducts></ManageAllProducts></RequireAdmin>}></Route>
         <Route path='allOrders' element={<RequireAdmin><AllOrders></AllOrders></RequireAdmin>}></Route>
 
       </Route>

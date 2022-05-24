@@ -16,6 +16,7 @@ import NoFound from './Pages/Shared/NoFound';
 import Users from './Pages/Dashboard/Users';
 import WoodenTools from './Pages/Home/WoodenTools';
 import Reviews from './Pages/Home/Reviews';
+import RequireAdmin from './Pages/Authentication/RequireAdmin';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
         <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
         <Route path='addReview' element={<AddReview></AddReview>}></Route>
         <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
-        <Route path='users' element={<Users></Users>}></Route>
+        <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
 
       </Route>
       <Route path='*' element={<NoFound></NoFound>}></Route>

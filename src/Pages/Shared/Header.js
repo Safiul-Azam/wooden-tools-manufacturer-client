@@ -37,7 +37,7 @@ const Header = () => {
                             {menu}
                         </ul>
                     </div>
-                    <Link to='/home' className='text-3xl  font-bold text-primary'>Wooden <span className='text-secondary'>Tools</span></Link>
+                    <Link to='/home' className='text-3xl font-bold text-primary'>Wooden <span className='text-secondary'>Tools</span></Link>
 
                 </div>
                 <label htmlFor="my-drawer-2" tabIndex="1" className="btn btn-ghost lg:hidden">

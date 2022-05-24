@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MyOrder = ({myOrder,index}) => {
-    const {name,email, productName,description ,perPrice, quantity, totalPrice} = myOrder
+const AllSingleOrder = ({singleOrder,index}) => {
+    const {name,email, productName ,perPrice, quantity, totalPrice} = singleOrder
     return (
-            <tr>
+        <tr>
                 <th>{index + 1}</th>
                 <td>{name}</td>
                 <td>{email}</td>
@@ -16,4 +16,4 @@ const MyOrder = ({myOrder,index}) => {
     );
 };
 
-export default MyOrder;
+export default AllSingleOrder;

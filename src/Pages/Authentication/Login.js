@@ -37,8 +37,12 @@ const Login = () => {
     };
     const handlePasswordReset = async ()=>{
         const email = getValues('email')
-       await sendPasswordResetEmail(email)
-       toast('send your email')
+       if(email){
+        await sendPasswordResetEmail(email)
+        toast.success('send your email')
+       }else{
+           toast.warning('please provide a valid email')
+       }
     }
     return (
         <div className='lg:w-1/3 md:w-1/2 w-full mx-auto border p-10 shadow-xl mt-28 mb-16'>

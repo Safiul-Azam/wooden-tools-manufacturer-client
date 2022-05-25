@@ -23,14 +23,14 @@ const DeleteOrderModal = ({deletingOrder,setDeletingOrder,refetch}) => {
      }
     return (
         <div>
-            <input type="checkbox" id="delete-product-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <h3 class="text-md text-warning">Are you sure delete the <span className='text-xl'>{productName}</span> from database and ui both!!!</h3>
-                    <p class="py-4 text-error">You won't find it anywhere!</p>
-                    <div class="modal-action">
+            <input type="checkbox" id="delete-product-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="text-md text-warning">Are you sure delete the <span className='text-xl'>{productName}</span> from database and ui both!!!</h3>
+                    <p className="py-4 text-error">You won't find it anywhere!</p>
+                    <div className="modal-action">
                     <button className='btn btn-sm btn-error text-white' onClick={handleCancel}>Confirm Delete</button>
-                        <label for="delete-product-modal" class="btn btn-sm btn-secondary">Cancel</label>
+                        <label for="delete-product-modal" className="btn btn-sm btn-secondary">Cancel</label>
                     </div>
                 </div>
             </div>

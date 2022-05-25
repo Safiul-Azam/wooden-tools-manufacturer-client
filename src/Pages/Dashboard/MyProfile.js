@@ -1,6 +1,6 @@
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -11,23 +11,30 @@ const MyProfile = () => {
     const [user] = useAuthState(auth)
     const [profile, setProfile] = useState({})
     const email = user.email
-    fetch(`http://localhost:5000/users/${email}`, {
-        method: 'GET',
-        headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        },
-    })
-        .then(res => res.json())
-        .then(data => setProfile(data))
+    useEffect( () =>{
+        fetch(`http://localhost:5000/users/${email}`, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => setProfile(data))
+    },[email])
     return (
-        <div className=' ml-20'>
+        <div className=' w-3/4 ml-20 border p-5'>
             <div>
-                {click ?
-                    <Outlet></Outlet> :
-                    <button onClick={() => setClick(true)}><Link to='/dashboard/myProfile/editProfile'><FontAwesomeIcon icon={faPenToSquare} /></Link></button>
+            <div className='top-32'>
+                {
+                    click && <button className=' font-bold text-4xl btn-xs text-red-500 rounded-none' onClick={() => setClick(false)}><Link to='/dashboard/myProfile'>X</Link></button>
                 }
             </div>
-            <div className='w-1/2 mx-30'>
+                {click ?
+                    <Outlet></Outlet> :
+                    <button className='text-orange-500 text-4xl' onClick={() => setClick(true)}><Link to='/dashboard/myProfile/editProfile'><FontAwesomeIcon icon={faPenToSquare} /></Link></button>
+                }
+            </div>
+            <div className='w-full mx-30'>
                 {click ||
                     <div className="form-control">
                         <label className=" mb-4">
@@ -63,11 +70,6 @@ const MyProfile = () => {
                             <input readOnly type="text" value={profile.linkedin || 'please add your linkedin link'} className="input w-2/3 text-lg font-semibold" />
                         </label>
                     </div>
-                }
-            </div>
-            <div className=' fixed top-32 left-1/3'>
-                {
-                    click && <button className=' font-bold text-2xl btn-xs text-red-500 rounded-none' onClick={() => setClick(false)}><Link to='/dashboard/myProfile'>X</Link></button>
                 }
             </div>
         </div>

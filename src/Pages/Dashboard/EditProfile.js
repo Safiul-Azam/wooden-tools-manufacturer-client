@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const EditProfile = () => {
@@ -18,14 +19,17 @@ const EditProfile = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => {
-                reset()
-                console.log(data.result)
+            .then(result => {
+                if(result.result.modifiedCount){
+                    reset()
+                    toast('update Your Profile')
+
+                }
             })
     }
     return (
         <div>
-            <div className='w-1/2 mx-auto border p-5'>
+            <div className='w-full mx-auto border p-5'>
                 <p className='text-2xl text-secondary mb-5 font-bold'>Update Your Profile</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input

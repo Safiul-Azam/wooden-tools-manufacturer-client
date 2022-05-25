@@ -16,9 +16,9 @@ const Dashboard = () => {
                 <h3 className='text-center text-purple-500 text-4xl font-bold drop-shadow-lg'>welcome to your Dashboard</h3>
                 <Outlet></Outlet>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side z-0">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-48 bg-gray-100 text-base-content">
+                <ul className="menu p-4 overflow-y-auto w-52 bg-gray-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     <li><CustomLink to='/dashboard/myProfile'>My Profile</CustomLink></li>
                     {admin ?

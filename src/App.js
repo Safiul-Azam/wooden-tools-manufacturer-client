@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Header from './Pages/Shared/Header';
 import Login from './Pages/Authentication/Login';
-import SingUp from './Pages/Authentication/SingUp';
+import SignUp from './Pages/Authentication/SignUp';
 import Purchase from './Pages/Purchase/Purchase';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,7 +31,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/signup' element={<SingUp></SingUp>}></Route>
+        <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/woodenTools' element={<WoodenTools></WoodenTools>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/purchase/:purchaseId' element={

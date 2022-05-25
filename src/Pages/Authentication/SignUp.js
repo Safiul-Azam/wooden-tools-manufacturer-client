@@ -34,6 +34,7 @@ const SingUp = () => {
       }
     const onSubmit = async data => {
         const displayName = data.name
+        console.log(displayName)
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName:displayName});
         if(sendEmailVerification){

@@ -17,8 +17,8 @@ const OrderModal = ({ handTool ,setOrder}) => {
             quantity:data.quantity,
             phone:data.phone,
             address:data.address,
-            perPrice:handTool.price,
-            totalPrice:handTool.price * data.quantity
+            perPrice:handTool.perPrice,
+            totalPrice:handTool.perPrice * data.quantity
         }
         fetch('https://guarded-cliffs-74230.herokuapp.com/order',{
             method:'POST',

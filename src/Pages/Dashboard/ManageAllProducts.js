@@ -12,7 +12,7 @@ const ManageAllProducts = () => {
         <div>
             <h2 className='text-3xl font-bold text-secondary text-center my-3'>MANAGE PRODUCT</h2>
             <div className="overflow-x-auto">
-                <table className="table w-2/3 mx-auto my-8 border">
+                <table className="table table-compact w-2/3 mx-auto my-8 border">
                     <thead>
                         <tr>
                             <th></th>

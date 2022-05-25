@@ -56,18 +56,18 @@ const OrderModal = ({ handTool ,setOrder}) => {
                             <input
                                 {...register("quantity", {
                                     min: {
-                                        value: handTool.minimum_quantity,
+                                        value: handTool.minQuantity,
                                         message: 'Please give your quantity more then in the suggestion'
 
                                     }, max: {
-                                        value: handTool.available_quantity,
+                                        value: handTool.maxQuantity,
                                         message: 'please give your quantity less then in the suggestion'
                                     }
 
                                 })}
                                 type="number"
                                 required
-                                placeholder={`${handTool.minimum_quantity} - ${handTool.available_quantity} pieces`}
+                                placeholder={`${handTool.minQuantity} - ${handTool.maxQuantity} pieces`}
                                 className="input input-bordered w-full mb-3" />
                             <label className="label">
                                 {errors.quantity?.type === 'min' && <span className="label-text-alt text-red-400 mb-4">{errors.quantity.message}</span>}

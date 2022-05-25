@@ -7,8 +7,47 @@ const AddProduct = () => {
     const user = useAuthState(auth)
     const email = user[0].email
     const { register, handleSubmit, reset } = useForm();
+    //API KEY FOR POST IMAGE BY imgBB
+    const imagePostKey = '3f97c2c2a1772df58562806c9f5465ba' 
+
     const onSubmit = data => {
         console.log(data)
+        const image = data.img[0]
+        const formData = new FormData()
+        formData.append('image',image)
+        fetch(`https://api.imgbb.com/1/upload?key=${imagePostKey}`,{
+            method:'POST',
+            body:formData
+            })
+        .then(res => res.json())
+        .then(result =>{
+           if(result.success){
+               const img = result?.data?.url
+               const handTool ={
+                email: data.email,
+                productName:data.productName,
+                description:data.description,
+                minQuantity:data.minQuantity,
+                maxQuantity:data.maxQuantity,
+                PerPrice:data.PerPrice,
+                img:img
+               }
+               console.log(handTool)
+               fetch('http://localhost:5000/handTools',{
+                   method:'POST',
+                   headers:{
+                       'content-type':'application/json',
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                   },
+                   body:JSON.stringify(handTool)
+               })
+               .then(res => res.json())
+               .then(data => {
+                   console.log(data)
+               })
+           }
+        })
+
     }
     return (
         <div className='w-1/2 mx-auto border rounded-md p-4 mt-4 mb-8'>
@@ -42,7 +81,7 @@ const AddProduct = () => {
                     required
                     type="number" placeholder="Per Price" className="input input-bordered w-full mb-3" />
                 <input
-                    {...register("image")}
+                    {...register("img")}
                     required
                     type="file" placeholder="Your Image" className="w-full mb-3" />
                 <input className='btn btn-secondary w-full' type="submit" value='submit' />

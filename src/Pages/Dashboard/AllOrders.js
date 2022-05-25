@@ -17,7 +17,7 @@ const AllOrders = () => {
         <div>
               <h2 className='text-3xl font-bold text-secondary text-center mt-8'>ALL ORDERS {allOrders.length}</h2>
               <div className="overflow-x-auto">
-            <table className="table w-2/3 mx-auto mt-8 border">
+            <table className="table table-compact w-2/3 mx-auto mt-8 border">
                 <thead>
                     <tr>
                         <th></th>

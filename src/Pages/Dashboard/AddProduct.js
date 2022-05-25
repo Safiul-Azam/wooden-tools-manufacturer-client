@@ -29,7 +29,7 @@ const AddProduct = () => {
                 description:data.description,
                 minQuantity:data.minQuantity,
                 maxQuantity:data.maxQuantity,
-                PerPrice:data.PerPrice,
+                perPrice:data.perPrice,
                 img:img
                }
                console.log(handTool)
@@ -77,7 +77,7 @@ const AddProduct = () => {
                     placeholder='Available Quantity'
                     className="input input-bordered w-full mb-3" />
                 <input
-                    {...register("PerPrice")}
+                    {...register("perPrice")}
                     required
                     type="number" placeholder="Per Price" className="input input-bordered w-full mb-3" />
                 <input

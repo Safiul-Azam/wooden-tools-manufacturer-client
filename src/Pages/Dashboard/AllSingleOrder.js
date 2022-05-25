@@ -11,7 +11,7 @@ const AllSingleOrder = ({singleOrder,index}) => {
                 <td>{quantity} <span className='text-xs text-secondary'>Pic</span></td>
                 <td>${perPrice}<span className='text-xs text-secondary'>/per</span></td>
                 <td>${totalPrice}</td>
-                <td><button className='btn btn-xs btn-success text-white text-xs'>Pay</button></td>
+                <td><button className='btn btn-xs btn-success text-white text-xs'>Shipping</button></td>
             </tr>
     );
 };

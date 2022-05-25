@@ -4,7 +4,7 @@ import WoodenTool from './WoodenTool';
 const WoodenTools = () => {
     const [tools, setTools] =useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/handTools')
+        fetch('https://guarded-cliffs-74230.herokuapp.com/handTools')
         .then(res => res.json())
         .then(data => setTools(data))
     },[])

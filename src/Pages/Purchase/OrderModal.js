@@ -20,7 +20,7 @@ const OrderModal = ({ handTool ,setOrder}) => {
             perPrice:handTool.price,
             totalPrice:handTool.price * data.quantity
         }
-        fetch('http://localhost:5000/order',{
+        fetch('https://guarded-cliffs-74230.herokuapp.com/order',{
             method:'POST',
             headers:{
                 "content-type":"application/json"

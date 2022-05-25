@@ -6,7 +6,7 @@ import ManageProduct from './ManageProduct';
 
 const ManageAllProducts = () => {
     const [productDeleting, setProductDeleting] = useState(null)
-    const { data: handTools, isLoading,refetch } = useQuery('handTools', () => fetch('http://localhost:5000/handTools').then(res => res.json()))
+    const { data: handTools, isLoading,refetch } = useQuery('handTools', () => fetch('https://guarded-cliffs-74230.herokuapp.com/handTools').then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }

@@ -9,7 +9,7 @@ import OrderModal from './OrderModal';
 const Purchase = () => {
     const [order, setOrder] = useState(null)
     const { purchaseId } = useParams()
-    const url = `http://localhost:5000/handTools/${purchaseId}`
+    const url = `https://guarded-cliffs-74230.herokuapp.com/handTools/${purchaseId}`
     const { data:handTool, isLoading } = useQuery(['tools', purchaseId], () => fetch(url).then(res => res.json()))
 
     if (isLoading) {

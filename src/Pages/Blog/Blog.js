@@ -1,6 +1,29 @@
 import React from 'react';
 
 const Blog = () => {
+
+    // answer of 5 num question and it is problem solving question
+    const phones = [
+        {name: 'samsung', price: 45000, ram: 16, camara: 30},
+        {name: 'infinex', price: 28000, ram: 16, camara: 30},
+        {name: 'nokia', price: 15000, ram: 16, camara: 30},
+        {name: 'oppo', price: 19000, ram: 16, camara: 30},
+        {name: 'redmi', price: 27000, ram: 16, camara: 30}
+    ]
+    function searchMobile(phones, searchName) {
+        const matched = [];
+        for (const phone of phones) {
+            const name = phone.name;
+            if (name.indexOf(searchName) != -1) {
+                matched.push(phone);
+            }
+        }
+        return matched;
+    }
+    const matched = searchMobile(phones, 'samsung');
+    console.log(matched);
+
+    /// end of this answer please check it
     return (
         <div className='lg:w-3/4 mx-auto mt-24'>
             <h2 className='text-2xl my-4 text-primary text-center font-bold'>Question & Answer</h2>
@@ -38,10 +61,10 @@ const Blog = () => {
             </div>
             <div tabIndex="0" class="collapse mb-2 collapse-arrow border border-base-300 bg-base-100 rounded-box">
                 <div class="collapse-title text-xl font-medium">
-                    Focus me to see content
+                5 You have an array of products. Each product has a name, price, description, etc. How will you implement a search to find products by name?
                 </div>
                 <div class="collapse-content">
-                    <p>tabindex="0" attribute is necessary to make the div focusable</p>
+                    <p>Answer top of this code. please check problem solving code </p>
                 </div>
             </div>
         </div>

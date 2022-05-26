@@ -19,7 +19,6 @@ const AddReview = () => {
         .then(res => res.json())
         .then(inserted => {
             if(inserted.insertedId){
-                console.log(inserted)
                 toast('Your Review is successfully post')
                 reset()
             }

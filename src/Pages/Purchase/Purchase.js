@@ -21,7 +21,7 @@ const Purchase = () => {
                 <img src={handTool.img} alt="" />
             </div>
             <div>
-                <h3 className='text-1xl text-secondary font-semibold mb-4'>Factory directly sales <span className='text-primary text-2xl'>{handTool.name}</span> to you</h3>
+                <h3 className='text-1xl text-secondary font-semibold mb-4'>Factory directly sales <span className='text-primary text-2xl'>{handTool.productName}</span> to you</h3>
                 <h4 className='text-4xl text-primary mb-4'>Price: ${handTool.perPrice}/<span className='text-lg text-secondary'>Per piece</span></h4>
                 <hr className='mb-4' />
                 <p className='text-xl'>Quantity Pieces: {handTool.minQuantity}-{handTool.maxQuantity}</p>

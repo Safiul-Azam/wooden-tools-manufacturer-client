@@ -12,7 +12,7 @@ const OrderModal = ({ handTool ,setOrder}) => {
         const order = {
             email:data.email,
             name:data.name,
-            productName:handTool.name, 
+            productName:handTool.productName, 
             description:data.description,
             quantity:data.quantity,
             phone:data.phone,
@@ -20,10 +20,11 @@ const OrderModal = ({ handTool ,setOrder}) => {
             perPrice:handTool.perPrice,
             totalPrice:handTool.perPrice * data.quantity
         }
-        fetch('https://guarded-cliffs-74230.herokuapp.com/order',{
+        fetch('http://localhost:5000/order',{
             method:'POST',
             headers:{
-                "content-type":"application/json"
+                "content-type":"application/json",
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body:JSON.stringify(order)
         })
@@ -45,7 +46,7 @@ const OrderModal = ({ handTool ,setOrder}) => {
                 <div className="modal-box">
                     <label htmlFor="order-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <h3 className='text-2xl text-secondary my-6'>{handTool.name}</h3>
+                        <h3 className='text-2xl font-bold text-secondary my-6'>{handTool.productName}</h3>
                         <input 
                         {...register("name")}
                         type="text" value={user.displayName || ''} readOnly className="input input-bordered w-full mb-3" />

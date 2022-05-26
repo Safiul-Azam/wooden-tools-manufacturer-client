@@ -3,10 +3,10 @@ import banner3 from '../../images/banner/banner5.png'
 
 const OurCompany = () => {
     return (
-        <div>
-            <div className=" container mx-auto mb-32">
+        <div className='bg-base-200  mb-16'>
+            <div className=" container mx-auto">
                 <div className="flex items-center justify-center flex-col lg:flex-row">
-                    <img src={banner3} alt='our company' className="lg:max-w-sm w-100 rounded-lg shadow-2xl" />
+                    <img src={banner3} alt='our company' className="lg:max-w-sm w-100 rounded-lg shadow-xl" />
                     <div className='lg:ml-20 w-3/4 lg:w-1/2'>
                     <h3 className='lg:text-4xl text-2xl mt-6 font-bold text-primary'>Company <span className='text-secondary'>Profile</span></h3>
                         <span className='text-secondary mt-4'>The Founder of TOP-quality Wooden tools in Japan</span>

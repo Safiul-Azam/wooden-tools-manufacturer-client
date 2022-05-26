@@ -33,7 +33,7 @@ const EditProfile = () => {
                 <p className='text-2xl text-secondary mb-5 font-bold'>Update Your Profile</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input
-                        {...register("name")}
+                        {...register("displayName")}
                         type="text" value={user.displayName || ''} readOnly className="input input-bordered w-full mb-3" />
                     <input
                         {...register("email")}

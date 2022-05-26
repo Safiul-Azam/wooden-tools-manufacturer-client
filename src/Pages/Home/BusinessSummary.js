@@ -4,7 +4,7 @@ import React from 'react';
 
 const BusinessSummary = () => {
     return (
-        <div className='my-24 '>
+        <div className='my-24 bg-base-200 p-16'>
                <h3 className='text-4xl  font-bold text-primary text-center'>TRUST IS THE KEY OF BUSINESS</h3>
                <p className='text-center text-secondary text-lg mb-16'>Try to work for user satisfaction</p>
             <div className="stats stats-vertical lg:stats-horizontal shadow w-full text-center mx-auto">

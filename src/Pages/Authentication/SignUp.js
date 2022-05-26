@@ -35,7 +35,7 @@ const SingUp = () => {
           return <Loading></Loading>
       }
     const onSubmit = async data => {
-        const displayName = data.name
+        const displayName = data.displayName
         console.log(displayName)
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName:displayName});
@@ -55,7 +55,7 @@ const SingUp = () => {
                         <span className="label-text">Your Name</span>
                     </label>
                     <input
-                        {...register('name', {
+                        {...register('displayName', {
                             required: {
                                 value: true,
                                 message: 'name is required'

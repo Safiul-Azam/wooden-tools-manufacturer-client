@@ -1,58 +1,133 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import OrderModal from './OrderModal';
+import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { useForm } from 'react-hook-form';
 
 const Purchase = () => {
     const [order, setOrder] = useState(null)
+    const [total, setTotal] = useState(0)
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const [user] = useAuthState(auth)
+    const inputRef = useRef(0)
     const { purchaseId } = useParams()
     const url = `https://guarded-cliffs-74230.herokuapp.com/handTools/${purchaseId}`
-    const { data:handTool, isLoading } = useQuery(['tools', purchaseId], () => fetch(url).then(res => res.json()))
+    const { data: handTool, isLoading } = useQuery(['tools', purchaseId], () => fetch(url).then(res => res.json()))
 
+    const handleIncrease = ()=>{
+        let errorMessage;
+        const quantity = inputRef.current.value
+        let quantityParse = parseFloat(quantity)
+        if(quantityParse < handTool.maxQuantity){
+            quantityParse = quantityParse + 1
+            inputRef.current.value = quantityParse
+        }else{
+            return toast.warning("can't order above your available quantity")
+        }
+    }
+    const handleDecrease = ()=>{
+        const quantity = inputRef.current.value
+        let quantityParse = parseFloat(quantity)
+        if(quantityParse > handTool.minQuantity){
+            quantityParse = quantityParse - 1
+            inputRef.current.value = quantityParse
+        }else{
+            return toast.warning("can't order below your minimum quantity")
+        } 
+    } 
+   
+
+    // ONSUBMIT FOR ADDED CART FILED
+    const onSubmit = data => {
+        const quantity = inputRef.current.value
+        const order = {
+            email: data.email,
+            name: data.name,
+            productName: handTool.productName,
+            quantity: quantity,
+            phone: data.phone,
+            address: data.address,
+            perPrice: handTool.perPrice,
+            totalPrice: handTool.perPrice * quantity
+        }
+        console.log(order)
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify()
+        })
+            .then(res => res.json())
+            .then(inserted => {
+                if (inserted.insertedId) {
+                    toast.success('your order is add to card. please pay for your order')
+                    reset()
+                    setOrder(null)
+                } else {
+                    toast.error('sorry! try again for order')
+                }
+            })
+    };
     if (isLoading) {
         return <Loading></Loading>
     }
     return (
-        <div className='container mx-auto grid grid-cols-3 mt-24 gap-8'>
+        <div className='container mx-auto grid grid-cols-1 lg:grid-cols-3 mt-24 gap-8'>
             <div>
-                <img src={handTool.img} alt="" />
+                <img className='w-full' src={handTool.img} alt="" />
             </div>
             <div>
-                <h3 className='text-1xl text-secondary font-semibold mb-4'>Factory directly sales <span className='text-primary text-2xl'>{handTool.productName}</span> to you</h3>
+                <h3 className='text-1xl text-secondary font-semibold mb-4'>Factory directly sales <span className='text-primary text-2xl'>{handTool.productName}</span></h3>
+                <hr className='my-4' />
                 <h4 className='text-4xl text-primary mb-4'>Price: ${handTool.perPrice}/<span className='text-lg text-secondary'>Per piece</span></h4>
                 <hr className='mb-4' />
                 <p className='text-xl'>Quantity Pieces: {handTool.minQuantity}-{handTool.maxQuantity}</p>
-                <hr className='mt-4' />
+                <hr className='my-4' />
+
+                {/* -------------------- */}
+
+                            <h3 className='text-xl mb-4 text-primary font-bold text-center   '>Manage Your Quantity</h3>
+                        <div className='text-center mb-8 flex'>
+                            <button onClick={handleDecrease} className='btn-md btn rounded-r-none'><FontAwesomeIcon icon={faMinus} /></button>
+                            <input ref={inputRef} className='border w-3/4 text-center input-bordered input rounded-none text-lg' placeholder={handTool.minQuantity} value={handTool.minQuantity} />
+                            <button onClick={handleIncrease} className='btn-md btn rounded-l-none'><FontAwesomeIcon icon={faPlus} /></button>
+                        </div>
+
+                        {/* -------------------- */}
             </div>
             <div>
-                <h4>{handTool.description}</h4>
-                <label 
-                htmlFor="order-modal" 
-                className='btn btn-Primary rounded-none'
-                onClick={()=>setOrder(handTool)}>
-                   Add to Card
-                </label>
+                <div className="">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <h3 className='text-2xl font-bold text-secondary mb-6'>{handTool.productName}</h3>
+                        <input
+                            {...register("name")}
+                            type="text" value={user.displayName || ''} readOnly className="input input-bordered w-full mb-3" />
+                        <input
+                            {...register("email")}
+                            type="text" value={user.email || ''} readOnly className="input input-bordered w-full mb-3" />
+                        
+                        <input
+                            {...register("phone")}
+                            required
+                            type="number" placeholder="Phone" className="input input-bordered w-full mb-3" />
+                        <input
+                            {...register("address")}
+                            required
+                            type="text" placeholder="Your Address" className="input input-bordered w-full mb-3" />
+                        <input className='btn btn-secondary w-full' type="submit" value='submit' />
+                    </form>
+                </div>
             </div>
-            {
-                order && <OrderModal
-                 handTool={handTool}
-                 setOrder={setOrder}
-                 ></OrderModal>
-            }
         </div>
+
     );
 };
 
 export default Purchase;
-            // <div className='text-center mt-8'>
-            //     <button className='btn-xs btn rounded-r-none'><FontAwesomeIcon icon={faMinus} /></button>
-            //     <input ref={inputRef} className='border' name='quantity' type="number" />
-            //     <button onClick={handlePlus} className='btn-xs btn rounded-l-none'><FontAwesomeIcon icon={faPlus} /></button>
-            // </div>
-            // <form >
-                
-            // </form>
-            // <h3>total price:{quantity}</h3>

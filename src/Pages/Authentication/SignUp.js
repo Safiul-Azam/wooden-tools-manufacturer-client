@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -26,9 +26,11 @@ const SingUp = () => {
       if(error || updateError){
           errorMessage = <p className='text-error text-sm mb-4'>{error.message || updateError.message}</p>
       }
-      if(token){
-         navigate(from ,{replace:true})
-      }
+      useEffect(()=>{
+        if (token) {
+            navigate(from, {replace:true})
+        }
+    },[from, navigate,token])
       if(loading || updating){
           return <Loading></Loading>
       }

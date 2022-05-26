@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -25,10 +25,11 @@ const Login = () => {
     if (error) {
         errorMessage = <p className='text-error text-sm mb-4'>{error.message}</p>
     }
-
-    if (token) {
-        navigate(from, {replace:true})
-    }
+    useEffect(()=>{
+        if (token) {
+            navigate(from, {replace:true})
+        }
+    },[from, navigate,token])
     if (loading) {
         return <Loading></Loading>
     }

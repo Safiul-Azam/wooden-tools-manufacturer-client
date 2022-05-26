@@ -12,12 +12,12 @@ const Header = () => {
     }
     const menu = <>
         <li><CustomLink to='/home'>Home</CustomLink></li>
-        <li><CustomLink to='/reviews'>Reviews</CustomLink></li>
+        <li><CustomLink to='/allReview'>Reviews</CustomLink></li>
         {
             user &&
             <>
                 <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
-                <li><CustomLink to='/woodenTools'>Wooden Tools</CustomLink></li>
+                <li><CustomLink to='/allProduct'>Wooden Tools</CustomLink></li>
             </>
         }
         {user ?

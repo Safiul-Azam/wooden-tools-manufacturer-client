@@ -1,6 +1,7 @@
 # This is a Wooden Tools Manufacturer Website
 
-This is a manufacturer website with tailwind css [wooden tools](https://wooden-tools-manufacturer.web.app/).
+This is a manufacturer website with tailwind css. Live site [wooden tools live site](https://wooden-tools-manufacturer.web.app/).
+This is a manufacturer website with tailwind css. git code [wooden tools code link](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-Safiul-Azam).
 
 ## features and functionality
 

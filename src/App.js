@@ -24,6 +24,8 @@ import Payment from './Pages/Dashboard/Payment';
 import EditProfile from './Pages/Dashboard/EditProfile';
 import AllProduct from './Pages/SomePages/AllProduct';
 import AllReview from './Pages/SomePages/AllReview';
+import Blog from './Pages/Blog/Blog';
+import MyPortfolio from './Pages/Blog/MyPortfolio';
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/myPortfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='/allProduct' element={<AllProduct></AllProduct>}></Route>
         <Route path='/allReview' element={<AllReview></AllReview>}></Route>
         <Route path='/woodenTools' element={<WoodenTools></WoodenTools>}></Route>

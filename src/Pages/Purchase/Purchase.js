@@ -56,7 +56,7 @@ const Purchase = () => {
             perPrice: handTool.perPrice,
             totalPrice: handTool.perPrice * quantity
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://guarded-cliffs-74230.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

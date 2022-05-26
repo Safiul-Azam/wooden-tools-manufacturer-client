@@ -5,7 +5,7 @@ const DeleteOrderModal = ({deletingOrder,setDeletingOrder,refetch}) => {
     const {productName,_id }= deletingOrder
     console.log(deletingOrder)
     const handleCancel = ()=>{
-        fetch(`http://localhost:5000/order/${_id}`,{
+        fetch(`https://guarded-cliffs-74230.herokuapp.com/order/${_id}`,{
             method:'DELETE',
             headers:{
                 authorization:`Bearer ${localStorage.getItem('accessToken')}`

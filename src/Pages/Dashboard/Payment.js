@@ -10,7 +10,7 @@ const Payment = () => {
     const [user]= useAuthState(auth)
 
 
-    const {data,isLoading} = useQuery(['order',id],()=>fetch(`http://localhost:5000/order/${id}`,{
+    const {data,isLoading} = useQuery(['order',id],()=>fetch(`https://guarded-cliffs-74230.herokuapp.com/order/${id}`,{
         method:'GET',
         headers:{authorization: `Bearer ${localStorage.getItem('accessToken')}`}
     }).then(res => res.json()))

@@ -11,7 +11,7 @@ const MyProfile = () => {
     const [user] = useAuthState(auth)
     const email = user?.email
     useEffect( () =>{
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`https://guarded-cliffs-74230.herokuapp.com/users/${email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

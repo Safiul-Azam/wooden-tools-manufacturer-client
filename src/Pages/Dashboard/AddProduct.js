@@ -33,7 +33,7 @@ const AddProduct = () => {
                 img:img
                }
                console.log(handTool)
-               fetch('https://guarded-cliffs-74230.herokuapp.com/handTools',{
+               fetch('http://localhost:5000/handTools',{
                    method:'POST',
                    headers:{
                        'content-type':'application/json',

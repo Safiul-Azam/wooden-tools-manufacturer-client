@@ -1,6 +1,7 @@
 import { faEnvelope, faPhone, faStreetView, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyPortfolio = () => {
     return (
@@ -61,6 +62,12 @@ const MyPortfolio = () => {
                     
                 </ul>
             </label>
+            <div>
+                <h3 className='text-2xl font-bold text-secondary'>My best web site link</h3>
+                <a className=' text-pink-400 block' target='_blank' rel='noopener noreferrer' href='https://furniture-ware-house-c81c0.web.app/'>Furniture-ware-house</a>
+                <a className=' text-pink-400 block' target='_blank' rel='noopener noreferrer' href='https://truth-never-loses.web.app/'>Truth-never-loses</a>
+                <a className=' text-pink-400 block' target='_blank' rel='noopener noreferrer' href='https://gregarious-caramel-fa0a93.netlify.app/'>Book House</a>
+            </div>
             
         </div>
     );

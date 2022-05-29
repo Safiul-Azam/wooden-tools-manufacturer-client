@@ -8,7 +8,7 @@ import User from './User'
 
 const Users = () => {
     const navigate = useNavigate()
-    const { data: users, isLoading , refetch } = useQuery('users', () => fetch('https://guarded-cliffs-74230.herokuapp.com/users',{
+    const { data: users, isLoading , refetch } = useQuery('users', () => fetch('http://localhost:5000/users',{
         method:'GET',
         headers:{
             authorization:`Bearer ${localStorage.getItem('accessToken')}`

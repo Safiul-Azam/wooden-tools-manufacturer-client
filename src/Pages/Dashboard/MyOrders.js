@@ -15,7 +15,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/login'
-    const url = `https://guarded-cliffs-74230.herokuapp.com/order/${email}`
+    const url = `http://localhost:5000/order/${email}`
     const { data: myOrders, isLoading, refetch } = useQuery(['order', email], () => fetch(url, {
         method: 'GET',
         headers: {
@@ -32,6 +32,7 @@ const MyOrders = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+    console.log(myOrders)
     return (
         <div>
             <div className="overflow-x-auto">
@@ -52,7 +53,8 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            myOrders.map((myOrder, index) => <MyOrder
+                            myOrders?.map((myOrder, index) => <MyOrder
+
                                 key={myOrder._id}
                                 index={index}
                                 myOrder={myOrder}

@@ -5,7 +5,7 @@ const useAdmin = user => {
     const [adminLoading, setAdminLoading] = useState(true)
     const email = user?.email
     if (email) {
-        fetch(`https://guarded-cliffs-74230.herokuapp.com/admin/${email}`, {
+        fetch(`http://localhost:5000/admin/${email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

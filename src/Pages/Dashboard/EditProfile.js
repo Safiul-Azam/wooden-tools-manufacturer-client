@@ -10,7 +10,7 @@ const EditProfile = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch(`https://guarded-cliffs-74230.herokuapp.com/users/${email}`, {
+        fetch(`http://localhost:5000/users/${email}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",

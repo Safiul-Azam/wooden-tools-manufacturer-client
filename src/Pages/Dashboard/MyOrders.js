@@ -32,7 +32,6 @@ const MyOrders = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    console.log(myOrders)
     return (
         <div>
             <div className="overflow-x-auto">

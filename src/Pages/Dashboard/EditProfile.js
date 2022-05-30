@@ -9,7 +9,6 @@ const EditProfile = () => {
     const email = user.email
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data)
         fetch(`http://localhost:5000/users/${email}`, {
             method: 'PUT',
             headers: {

@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MyOrder = ({ myOrder, index, setDeletingOrder }) => {
-    const { _id, name, email, productName, perPrice, quantity, totalPrice } = myOrder
+    const { paid,_id, name, email, productName, perPrice, quantity, totalPrice } = myOrder
     return (
         <tr>
             <th>{index + 1}</th>
@@ -15,7 +15,8 @@ const MyOrder = ({ myOrder, index, setDeletingOrder }) => {
             <td>${perPrice}<span className='text-xs text-secondary'>/per</span></td>
             <td>${totalPrice}</td>
             <td>
-                <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-xs btn-success text-white text-xs'>Pay</button></Link>
+               { !paid && <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-xs btn-success text-white text-xs'>Pay</button></Link>}
+               { paid && <p className='text-green-500 text-sm'>Paid</p>}
             </td>
             <td>
                 <label onClick={() => setDeletingOrder(myOrder)} htmlFor="delete-product-modal" className='text-red-500 text-xl'><FontAwesomeIcon icon={faTrash} /></label>

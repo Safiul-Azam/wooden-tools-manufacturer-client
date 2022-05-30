@@ -11,7 +11,6 @@ const AddProduct = () => {
     const imagePostKey = '3f97c2c2a1772df58562806c9f5465ba' 
 
     const onSubmit = data => {
-        console.log(data)
         const image = data.img[0]
         const formData = new FormData()
         formData.append('image',image)
@@ -32,7 +31,6 @@ const AddProduct = () => {
                 perPrice:data.perPrice,
                 img:img
                }
-               console.log(handTool)
                fetch('http://localhost:5000/handTools',{
                    method:'POST',
                    headers:{

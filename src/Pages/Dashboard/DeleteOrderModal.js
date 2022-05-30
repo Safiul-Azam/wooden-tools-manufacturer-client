@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 const DeleteOrderModal = ({deletingOrder,setDeletingOrder,refetch}) => {
     const {productName,_id }= deletingOrder
-    console.log(deletingOrder)
     const handleCancel = ()=>{
         fetch(`http://localhost:5000/order/${_id}`,{
             method:'DELETE',
@@ -13,7 +12,6 @@ const DeleteOrderModal = ({deletingOrder,setDeletingOrder,refetch}) => {
         })
         .then(res =>res.json())
         .then(data => {
-            console.log(data)
             if (data.deletedCount) {
                 setDeletingOrder(null)
                 toast.success('Cancel successfully')

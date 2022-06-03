@@ -28,6 +28,11 @@ const MyProfile = () => {
                 </Link>
             </div>
             <div className='w-full mx-30'>
+                <div class="avatar">
+                    <div class="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src={profile.img} alt='safiul'/>
+                    </div>
+                </div>
                 <div className="form-control">
                     <label className=" mb-4">
                         <span className='text-lg font-bold'><FontAwesomeIcon icon={faUser} />  Name</span>

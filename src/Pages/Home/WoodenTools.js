@@ -11,9 +11,9 @@ const WoodenTools = () => {
     }, [])
     return (
         <div className='my-28 container mx-auto'>
-            <h3 className="text-3xl text-accent font-bold text-center mb-4">Wooded Working Tools</h3>
-            <p className='text-center text-secondary mb-8'>Mastering the use of fine Japanese woodworking tools requires a great deal of patience, and years of practice.</p>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
+            <h3 className='lg:text-4xl text-2xl mt-6 font-bold text-primary text-center mb-4'>Wooded Working <span className='text-secondary'>Tools</span></h3>
+            <p className='text-center text-secondary mb-12'>Mastering the use of fine Japanese woodworking tools requires a great deal of patience, and years of practice.</p>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-24'>
                 {
                     tools.slice(-6).map(tool => <WoodenTool
                         key={tool._id}

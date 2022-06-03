@@ -21,7 +21,7 @@ const Blog = () => {
         return matched;
     }
     const matched = searchMobile(phones, 'samsung');
-    console.log(matched);
+    // console.log(matched);
 
     /// end of this answer please check it
     return (

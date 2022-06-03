@@ -12,14 +12,41 @@ const EditProfile = () => {
     const [user] = useAuthState(auth)
     const email = user.email
     const { register, handleSubmit, reset } = useForm();
+    //API KEY FOR POST IMAGE BY imgBB
+    const imagePostKey = '3f97c2c2a1772df58562806c9f5465ba' 
+
+
+
     const onSubmit = data => {
-        fetch(`http://localhost:5000/users/${email}`, {
+        console.log(data)
+        const image = data.image[0]
+        const formData = new FormData()
+        formData.append('image', image)
+        fetch(`https://api.imgbb.com/1/upload?key=${imagePostKey}`,{
+            method:'POST',
+            body:formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                const img = data.data.url
+                const userInfo ={
+                    displayName:data.displayName,
+                    email:data.email,
+                    city:data.city,
+                    phone:data.phone,
+                    district:data.district,
+                    facebook:data.facebook,
+                    linkedin:data.linkedin,
+                    img:img
+                }
+                fetch(`http://localhost:5000/users/${email}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(userInfo)
         })
             .then(res => res.json())
             .then(result => {
@@ -29,6 +56,8 @@ const EditProfile = () => {
 
                 }
             })
+            })
+        
     }
     return (
         <div className='w-3/4 mx-auto border p-5'>
@@ -44,10 +73,12 @@ const EditProfile = () => {
                     <div className='absolute bottom-0 bg-slate-300 right-0 w-8 h-8 pr-2 flex text-center items-center'>
                         <input
                             {...register("image")}
-                            type="file" src={userPic} readOnly
+                            type="file" src={userPic || user.img} readOnly
                             className="
-                            file:bg-gradient-to-r file:from-cyan-500 file:to-blue-500
-                            file:w-full opacity-0 file:absolute file:cursor-pointer
+                            file:bg-gradient-to-r 
+                            file:from-cyan-500 file:to-blue-500
+                            file:w-full opacity-0 
+                            file:absolute file:cursor-pointer
                             " />
                         <FontAwesomeIcon className=' text-slate-500' icon={faCamera} />
                     </div>

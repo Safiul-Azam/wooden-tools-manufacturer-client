@@ -1,24 +1,16 @@
 import { faAddressCard, faCity, faEnvelope, faLink, faPenToSquare, faPhone, faStreetView, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useProfile from '../../hooks/useProfile';
+import userPic from '../../images/user/user-1.png'
 
 const MyProfile = () => {
-    const [profile, setProfile] = useState({})
     const [user] = useAuthState(auth)
-    const email = user?.email
-    useEffect(() => {
-        fetch(`http://localhost:5000/users/${email}`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            },
-        })
-            .then(res => res.json())
-            .then(data => setProfile(data))
-    }, [email])
+    const [profile] = useProfile(user)
+    
     return (
         <div className=' w-3/4 mx-auto p-5'>
             <div className='flex justify-between border-slate-300 border-b-2 mb-4'>
@@ -30,7 +22,7 @@ const MyProfile = () => {
             <div className='w-full mx-30'>
                 <div class="avatar">
                     <div class="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={profile.img} alt='safiul'/>
+                        <img src={profile.img || userPic} alt='safiul'/>
                     </div>
                 </div>
                 <div className="form-control">

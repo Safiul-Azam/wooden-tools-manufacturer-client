@@ -1,6 +1,7 @@
 import { faCamera, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import { render } from '@testing-library/react';
+import React, { useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -12,10 +13,20 @@ const EditProfile = () => {
     const [user] = useAuthState(auth)
     const email = user.email
     const { register, handleSubmit, reset } = useForm();
+    const [profilePhoto, setProfilePhoto] = useState('')
+    
+    const changePhoto = e =>{
+        const reader = new FileReader()
+        console.log(reader)
+        reader.onload = ()=>{
+            if(reader.readyState === 2){
+                setProfilePhoto(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
     //API KEY FOR POST IMAGE BY imgBB
     const imagePostKey = '3f97c2c2a1772df58562806c9f5465ba' 
-
-
 
     const onSubmit = data => {
         console.log(data)
@@ -29,7 +40,7 @@ const EditProfile = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                const img = data.data.url
+                const img = data.image
                 const userInfo ={
                     displayName:data.displayName,
                     email:data.email,
@@ -68,12 +79,16 @@ const EditProfile = () => {
                 </Link>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className=' w-40 mx-auto relative mb-4 border-8 rounded-full'>
-                    <img src={userPic} alt="userPic" />
+                <div className=' w-40 mx-auto relative mb-4 border-8'>
+                    <img src={profilePhoto ||userPic} className='' alt="userPic" />
                     <div className='absolute bottom-0 bg-slate-300 right-0 w-8 h-8 pr-2 flex text-center items-center'>
                         <input
                             {...register("image")}
-                            type="file" src={userPic || user.img} readOnly
+                            type="file"
+                            onChange={changePhoto}
+                            accept='image/*'
+                            name='image-upload'
+                            id='input'
                             className="
                             file:bg-gradient-to-r 
                             file:from-cyan-500 file:to-blue-500

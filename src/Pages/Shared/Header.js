@@ -1,14 +1,16 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import CustomLink from './CustomLink';
 import userPic from '../../images/user/user-1.png'
+import useProfile from '../../hooks/useProfile';
 
 const Header = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
+    const [profile] = useProfile(user)
     const logOut = () => {
         signOut(auth)
         navigate('/login')
@@ -32,7 +34,7 @@ const Header = () => {
                 <li>
                     <div class="avatar">
                         <div class="w-12">
-                            <Link to='/dashboard/myProfile'><img src={userPic || user.img} alt={'userPic'} /></Link>
+                            <Link to='/dashboard/myProfile'><img src={profile.img || userPic} alt={'userPic'} className='rounded-full' /></Link>
                             <p className='text-red-500'>{user.displayName}</p>
                         </div>
                     </div>
@@ -57,7 +59,7 @@ const Header = () => {
 
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
+                    <ul className="menu menu-horizontal p-0 z-10">
                         {menu}
                     </ul>
                 </div>

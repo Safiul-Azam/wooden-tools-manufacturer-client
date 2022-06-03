@@ -20,14 +20,13 @@ const MyProfile = () => {
             .then(data => setProfile(data))
     }, [email])
     return (
-        <div className=' w-3/4 mx-auto border p-5'>
-            <div className='flex  justify-between'>
-                <h3 className="text-4xl text-orange-500 font-bold">Your Profile</h3>
+        <div className=' w-3/4 mx-auto p-5'>
+            <div className='flex justify-between border-slate-300 border-b-2 mb-4'>
+                <h3 className="text-4xl text-secondary font-bold">Your Profile</h3>
                 <Link to='/dashboard/editProfile'>
                     <button className='text-orange-500 text-4xl mb-4'><FontAwesomeIcon icon={faPenToSquare} /></button>
                 </Link>
             </div>
-            <hr  className='mb-4'/>
             <div className='w-full mx-30'>
                 <div className="form-control">
                     <label className=" mb-4">

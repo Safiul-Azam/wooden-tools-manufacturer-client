@@ -29,9 +29,9 @@ const AddReview = () => {
     };
 
     return (
-        <div className=' w-3/4 mx-auto border p-4 mt-6'>
+        <div className=' w-3/4 mx-auto p-4 mt-6'>
+            <div className='w-full mx-auto border border-slate-400 rounded-2xl p-4'>
             <h2 className='text-3xl font-bold text-secondary text-center my-3'>Add Ratings & Reviews</h2>
-            <div className='w-full mx-auto border p-4'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label className="label">
                         <span className="label-text text-xl">Your Name</span>
@@ -50,7 +50,7 @@ const AddReview = () => {
                             const ratingValue = i + 1
                             return <label>
                                 <input {...register("rating")} className='hidden' type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} />
-                                <FontAwesomeIcon key={index} className='text-xl' color={ratingValue <= rating ? '#FACA51' : '#EFF0F5'} icon={faStar} />
+                                <FontAwesomeIcon key={index} className='text-xl' color={ratingValue <= rating ? '#FACA51' : '#ffffff'} icon={faStar} />
                             </label>
                         })}
                     </div>

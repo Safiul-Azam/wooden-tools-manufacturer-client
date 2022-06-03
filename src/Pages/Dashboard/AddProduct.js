@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddProduct = () => {
@@ -42,6 +43,8 @@ const AddProduct = () => {
                .then(res => res.json())
                .then(data => {
                    console.log(data)
+                   reset()
+                   toast('Added a new Product')
                })
            }
         })

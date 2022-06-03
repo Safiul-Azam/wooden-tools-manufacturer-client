@@ -9,17 +9,9 @@ const Dashboard = () => {
     const [user] = useAuthState(auth)
     const [admin] = useAdmin(user)
     return (
-        <div className="drawer drawer-mobile w-full mx-auto container mt-28">
-            <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col">
-                {/* <!-- Page content here --> */}
-                {/* <h3 className='text-center text-primary text-4xl font-bold drop-shadow-lg my-8'>welcome to your Dashboard</h3> */}
-                <Outlet></Outlet>
-            </div>
-            <div className="drawer-side z-0">
-                <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-52 bg-gray-100 text-base-content">
-                    {/* <!-- Sidebar content here --> */}
+        <div className='grid grid-cols-1 lg:grid-cols-5 container mx-auto mb-16 mt-28'>
+            <div className='mb-4 bg-slate-200 rounded-2xl mr-0 lg:mr-4'>
+                <ul className="menu">
                     <li className=''><CustomLink to='/dashboard/myProfile'>My Profile</CustomLink></li>
                     {admin ?
                         <>
@@ -27,15 +19,25 @@ const Dashboard = () => {
                             <li><CustomLink to='/dashboard/addProduct'>Add Product</CustomLink></li>
                             <li><CustomLink to='/dashboard/manageAllProducts'>Manage Product</CustomLink></li>
                             <li><CustomLink to='/dashboard/allOrders'>All Orders</CustomLink></li>
-                        </>:
+                        </> :
                         <>
-                        <li><CustomLink to='/dashboard/myOrders'>My Order</CustomLink></li>
-                        <li><CustomLink to='/dashboard/addReview'>Add Review</CustomLink></li>
-                    </>
+                            <li><CustomLink to='/dashboard/myOrders'>My Order</CustomLink></li>
+                            <li><CustomLink to='/dashboard/addReview'>Add Review</CustomLink></li>
+                        </>
                     }
                 </ul>
             </div>
+            <div className='col-span-4 rounded-2xl bg-slate-200'>
+                <div className="">
+                    <Outlet></Outlet>
+                </div>
+            </div>
         </div>
+        // <div className="drawer drawer-mobile w-full mx-auto container mt-28">
+        //     <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
+        //     
+
+        // </div>
     );
 };
 

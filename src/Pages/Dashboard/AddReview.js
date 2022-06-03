@@ -29,7 +29,7 @@ const AddReview = () => {
     };
 
     return (
-        <div className=' w-1/2 mx-auto border p-4 mt-6'>
+        <div className=' w-3/4 mx-auto border p-4 mt-6'>
             <h2 className='text-3xl font-bold text-secondary text-center my-3'>Add Ratings & Reviews</h2>
             <div className='w-full mx-auto border p-4'>
                 <form onSubmit={handleSubmit(onSubmit)}>

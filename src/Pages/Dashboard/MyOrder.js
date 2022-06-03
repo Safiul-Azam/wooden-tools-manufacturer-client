@@ -19,7 +19,7 @@ const MyOrder = ({ myOrder, index, setDeletingOrder }) => {
                { paid && <p className='text-green-500 text-sm'>Paid</p>}
             </td>
             <td>
-                <label onClick={() => setDeletingOrder(myOrder)} htmlFor="delete-product-modal" className='text-red-500 text-xl'><FontAwesomeIcon icon={faTrash} /></label>
+                {!paid && <label onClick={() => setDeletingOrder(myOrder)} htmlFor="delete-product-modal" className='text-red-500 text-xl'><FontAwesomeIcon icon={faTrash} /></label>}
             </td>
         </tr>
     );

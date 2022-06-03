@@ -5,7 +5,7 @@ import Header from './Pages/Shared/Header';
 import Login from './Pages/Authentication/Login';
 import SignUp from './Pages/Authentication/SignUp';
 import Purchase from './Pages/Purchase/Purchase';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './Pages/Authentication/RequireAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
@@ -47,20 +47,19 @@ function App() {
             <Purchase></Purchase>
           </RequireAuth>
         }></Route>
-      <Route path='dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
-        <Route path='payment/:id'element={<Payment></Payment>}></Route>
-        <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
-        <Route path='addReview' element={<AddReview></AddReview>}></Route>
-        <Route path='myProfile' element={<MyProfile></MyProfile>}>
+        <Route path='dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
+          <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='addReview' element={<AddReview></AddReview>}></Route>
           <Route path='editProfile' element={<EditProfile></EditProfile>}></Route>
-        </Route>
-        <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
-        <Route path='addProduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
-        <Route path='manageAllProducts' element={<RequireAdmin><ManageAllProducts></ManageAllProducts></RequireAdmin>}></Route>
-        <Route path='allOrders' element={<RequireAdmin><AllOrders></AllOrders></RequireAdmin>}></Route>
+          <Route path='myProfile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route path='addProduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+          <Route path='manageAllProducts' element={<RequireAdmin><ManageAllProducts></ManageAllProducts></RequireAdmin>}></Route>
+          <Route path='allOrders' element={<RequireAdmin><AllOrders></AllOrders></RequireAdmin>}></Route>
 
-      </Route>
-      <Route path='*' element={<NoFound></NoFound>}></Route>
+        </Route>
+        <Route path='*' element={<NoFound></NoFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>

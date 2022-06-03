@@ -9,11 +9,11 @@ const Dashboard = () => {
     const [user] = useAuthState(auth)
     const [admin] = useAdmin(user)
     return (
-        <div className="drawer drawer-mobile">
+        <div className="drawer drawer-mobile w-full mx-auto container mt-28">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* <!-- Page content here --> */}
-                <h3 className='text-center text-primary text-4xl font-bold drop-shadow-lg my-8'>welcome to your Dashboard</h3>
+                {/* <h3 className='text-center text-primary text-4xl font-bold drop-shadow-lg my-8'>welcome to your Dashboard</h3> */}
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side z-0">

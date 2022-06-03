@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
@@ -19,7 +21,7 @@ const EditProfile = () => {
         })
             .then(res => res.json())
             .then(result => {
-                if(result.result.modifiedCount){
+                if (result.result.modifiedCount) {
                     reset()
                     toast('update Your Profile')
 
@@ -27,9 +29,13 @@ const EditProfile = () => {
             })
     }
     return (
-        <div>
-            <div className='w-full mx-auto border p-5'>
-                <p className='text-2xl text-secondary mb-5 font-bold'>Update Your Profile</p>
+            <div className='w-3/4 mx-auto border p-5'>
+                <div className='flex  justify-between'>
+                    <h3 className="text-4xl text-orange-500 font-bold">Update Your Profile</h3>
+                    <Link to='/dashboard/myProfile'>
+                        <button className='text-red-500 text-4xl mb-4' >X</button>
+                    </Link>
+                </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input
                         {...register("displayName")}
@@ -69,7 +75,6 @@ const EditProfile = () => {
                     <input className='btn btn-secondary w-full' type="submit" value='Update' />
                 </form>
             </div>
-        </div>
     );
 };
 

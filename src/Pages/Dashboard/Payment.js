@@ -9,7 +9,7 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L1lwNK8cblwyB4icoDXqCV5LRsqz0BUpH0hPggBa0b10LucJ4r91UIcNBp0DBWqe94yOFFslBJmqMDKdZNesRZ400Ewz7t6jX');
 const Payment = () => {
     const { id } = useParams()
-    const { data: order, isLoading } = useQuery(['order', id], () => fetch(`http://localhost:5000/orders/order/${id}`, {
+    const { data: order, isLoading } = useQuery(['order', id], () => fetch(`https://guarded-cliffs-74230.herokuapp.com/orders/order/${id}`, {
         method: 'GET',
         headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` }
     }).then(res => res.json()))

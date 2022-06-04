@@ -51,7 +51,7 @@ const EditProfile = () => {
                     linkedin:data.linkedin,
                     img:img
                 }
-                fetch(`http://localhost:5000/users/${email}`, {
+                fetch(`https://guarded-cliffs-74230.herokuapp.com/users/${email}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json",

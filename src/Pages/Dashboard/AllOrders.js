@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import AllSingleOrder from './AllSingleOrder';
 
 const AllOrders = () => {
-    const {data:allOrders, isLoading} = useQuery('orders',()=>fetch('http://localhost:5000/order',{
+    const {data:allOrders, isLoading} = useQuery('orders',()=>fetch('https://guarded-cliffs-74230.herokuapp.com/order',{
         method:'GET',
         headers:{
             authorization : `Bearer ${localStorage.getItem('accessToken')}`

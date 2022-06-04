@@ -11,7 +11,7 @@ const AddReview = () => {
     const [user] = useAuthState(auth)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/review', {
+        fetch('https://guarded-cliffs-74230.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

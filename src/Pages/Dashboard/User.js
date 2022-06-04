@@ -6,7 +6,7 @@ const user = ({user,index,refetch}) => {
 
     const createAdmin = ()=>{
 
-        fetch(`http://localhost:5000/users/admin/${email}`,{
+        fetch(`https://guarded-cliffs-74230.herokuapp.com/users/admin/${email}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json',

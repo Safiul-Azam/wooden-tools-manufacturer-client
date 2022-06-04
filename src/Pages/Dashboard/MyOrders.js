@@ -15,7 +15,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/login'
-    const url = `http://localhost:5000/order/${email}`
+    const url = `https://guarded-cliffs-74230.herokuapp.com/order/${email}`
     const { data: myOrders, isLoading, refetch } = useQuery(['order', email], () => fetch(url, {
         method: 'GET',
         headers: {

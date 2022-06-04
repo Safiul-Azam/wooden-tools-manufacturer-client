@@ -7,7 +7,7 @@ const useToken = (user) => {
         const displayName = user?.user?.displayName
         const currentUser = { email: email, displayName:displayName }
         if (email) {
-            const url = `http://localhost:5000/users/${email}`
+            const url = `https://guarded-cliffs-74230.herokuapp.com/users/${email}`
             fetch(url,{
                 method:'PUT',
                 headers:{

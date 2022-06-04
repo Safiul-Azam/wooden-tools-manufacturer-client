@@ -17,7 +17,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth)
     const inputRef = useRef(0)
     const { purchaseId } = useParams()
-    const url = `http://localhost:5000/handTools/${purchaseId}`
+    const url = `https://guarded-cliffs-74230.herokuapp.com/handTools/${purchaseId}`
     const { data: handTool, isLoading } = useQuery(['tools', purchaseId], () => fetch(url).then(res => res.json()))
 
     const handleIncrease = () => {
@@ -55,7 +55,7 @@ const Purchase = () => {
             perPrice: handTool.perPrice,
             totalPrice: handTool.perPrice * quantity
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://guarded-cliffs-74230.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

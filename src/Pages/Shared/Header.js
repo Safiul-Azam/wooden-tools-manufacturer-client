@@ -20,7 +20,7 @@ const Header = () => {
         <li><CustomLink to='/home'>Home</CustomLink></li>
         <li><CustomLink to='/allReview'>Reviews</CustomLink></li>
         <li><CustomLink to='/blog'>Blogs</CustomLink></li>
-        <li><CustomLink to='/myPortfolio'>MyPortfolios</CustomLink></li>
+        <li><CustomLink to='/myPortfolio'>MyPortfolio</CustomLink></li>
         {
             user &&
             <>

@@ -4,6 +4,12 @@ This is a manufacturer website with tailwind css. Live site [wooden tools live s
 This is a manufacturer website with tailwind css. git code [wooden tools code link](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-Safiul-Azam).
 
 ## features and functionality
+* Implemented authentication by firebase and authorization by JSON web token. and without
+authentication & authorization users are not eligible to have access.
+* Created dashboard for admin and users. So they have some activities here like see orders, pay for
+their orders, update their profile, etc.
+* Some activities for admin manage product adds a new product, make admin someone,
+* Utilized stripe for payment method and nodeMailer, mail Gun to send mail
 
 ### `React javascript library have been used`
 

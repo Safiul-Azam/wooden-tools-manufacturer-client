@@ -46,7 +46,7 @@ const AddReview = () => {
                     <label className="label">
                         <span className="label-text text-accent text-xl">Your Rating</span>
                     </label>
-                        {[...Array(5)].map((star, index,i) => {
+                        {[...Array(5)].map((star,i,index) => {
                             const ratingValue = i + 1
                             return <label>
                                 <input {...register("rating")} className='hidden' type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} />

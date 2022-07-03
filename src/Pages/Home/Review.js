@@ -12,18 +12,17 @@ const Review = ({ review }) => {
     const { name, description, rating } = review
     const ratingToNumber = parseInt(rating)
     return (
-        <div className="card border-t-2 bg-base-100 shadow-xl">
+        <div className="card border-t-2 bg-base-100 shadow-md hover:shadow-2xl ease-in duration-300">
             <div className="card-body text-center ">
                 <div class="avatar mx-auto">
-                    <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src={(profile.displayName === name) ? profile.img : userPic} alt='profile-pic' />
                     </div>
                 </div>
-                <h2 className="text-2xl my-8">{name}</h2>
+                <h2 className="text-2xl my-2">{name}</h2>
                 <p className='text-sm tracking-normal'>{description}</p>
                 <div className=''>
                     {[...Array(ratingToNumber)].map((star, i) => {
-                        console.log(i)
                         return <FontAwesomeIcon className='text-sm' color={rating ? '#FACA51' : '#EFF0F5'} icon={faStar} />
                     })}
                 </div>

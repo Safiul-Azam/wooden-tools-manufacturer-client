@@ -1,12 +1,12 @@
 import React from 'react';
-import banner3 from '../../images/banner/banner5.png'
+import banner3 from '../../images/banner/banner-3.png'
 
 const OurCompany = () => {
     return (
-        <div className='bg-base-200  mb-16'>
+        <div className='bg-base-200 py-4 mb-16'>
             <div className=" container mx-auto">
                 <div className="flex items-center justify-center flex-col lg:flex-row">
-                    <img src={banner3} alt='our company' className="lg:max-w-sm w-100 rounded-lg shadow-xl" />
+                    <img src={banner3} alt='our company' className="border-l-8 border-b-8 border-primary shadow-2xl lg:max-w-sm w-100 rounded" />
                     <div className='lg:ml-20 w-3/4 lg:w-1/2'>
                     <h3 className='lg:text-4xl text-2xl mt-6 font-bold text-primary'>Company <span className='text-secondary'>Profile</span></h3>
                         <span className='text-secondary mt-4'>The Founder of TOP-quality Wooden tools in Japan</span>

@@ -14,61 +14,66 @@ const EditProfile = () => {
     const email = user.email
     const { register, handleSubmit, reset } = useForm();
     const [profilePhoto, setProfilePhoto] = useState('')
+    const [photoii, setPhotoii] = useState('')
     
-    const changePhoto = e =>{
+    const changePhoto = e => {
         const reader = new FileReader()
-        console.log(reader)
-        reader.onload = ()=>{
-            if(reader.readyState === 2){
+        reader.onload = () => {
+            if (reader.readyState === 2) {
                 setProfilePhoto(reader.result)
+                setPhotoii(e.target.files[0].name) 
             }
         }
         reader.readAsDataURL(e.target.files[0])
+        
     }
     //API KEY FOR POST IMAGE BY imgBB
-    const imagePostKey = '3f97c2c2a1772df58562806c9f5465ba' 
+    const imagePostKey = '3f97c2c2a1772df58562806c9f5465ba'
 
     const onSubmit = data => {
-        console.log(data)
-        const image = data.image[0]
+        // console.log(data)
+        // console.log(data.image[0])
+        const image = photoii
+        console.log(image)
         const formData = new FormData()
         formData.append('image', image)
-        fetch(`https://api.imgbb.com/1/upload?key=${imagePostKey}`,{
-            method:'POST',
-            body:formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                const img = data.image
-                const userInfo ={
-                    displayName:data.displayName,
-                    email:data.email,
-                    city:data.city,
-                    phone:data.phone,
-                    district:data.district,
-                    facebook:data.facebook,
-                    linkedin:data.linkedin,
-                    img:img
-                }
-                fetch(`https://guarded-cliffs-74230.herokuapp.com/users/${email}`, {
-            method: 'PUT',
-            headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(userInfo)
+        fetch(`https://api.imgbb.com/1/upload?key=${imagePostKey}`, {
+            method: 'POST',
+            body: formData
         })
             .then(res => res.json())
             .then(result => {
-                if (result.result.modifiedCount) {
-                    reset()
-                    toast('update Your Profile')
-
+                console.log(data)
+                const img = data.image
+                console.log(data.image)
+                const userInfo = {
+                    displayName: data.displayName,
+                    email: data.email,
+                    city: data.city,
+                    phone: data.phone,
+                    district: data.district,
+                    facebook: data.facebook,
+                    linkedin: data.linkedin,
+                    img: img
                 }
+                fetch(`https://guarded-cliffs-74230.herokuapp.com/users/${email}`, {
+                    method: 'PUT',
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.result.modifiedCount) {
+                            reset()
+                            toast('update Your Profile')
+
+                        }
+                    })
             })
-            })
-        
+
     }
     return (
         <div className='w-3/4 mx-auto border p-5'>
@@ -80,7 +85,7 @@ const EditProfile = () => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=' w-40 mx-auto relative mb-4 border-8'>
-                    <img src={profilePhoto ||userPic} className='' alt="userPic" />
+                    <img src={profilePhoto || userPic} className='' alt="userPic" />
                     <div className='absolute bottom-0 bg-slate-300 right-0 w-8 h-8 pr-2 flex text-center items-center'>
                         <input
                             {...register("image")}
